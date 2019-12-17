@@ -82,10 +82,8 @@ main{
 /*login.html*/
 .form{
 	position: absolute;
-	top: 0em;
-	right: 0em;
 	width: 36%;
-	padding: 6em 5em;
+	padding: 5em 5em;
 	font-weight: 300;
 }
 
@@ -97,8 +95,8 @@ main{
 
 .form p{
 	display: block;
-	font-size: 1.2em;
-	line-height: 1.2em;
+	font-size: 1.5em;
+	line-height: 1.5em;
 	margin-bottom: 1.2em;
 }
 
@@ -106,17 +104,15 @@ main{
 	display: block;
 	border: 1px solid #666;
 	background-color: #fff;
-	height: 1.6em;
+	height: 2.0em;
 	width: 90%;
-	padding: 0.5em 1em;
+	padding: 1.0em 1em;
 	margin-bottom: 1em;
 }
 
 /*Register.html*/
 .register_form{
 	position: absolute;
-	top: 0em;
-	right: 0em;
 	width: 36%;
 	padding: 3em 5em;
 	font-weight: 300;
@@ -139,9 +135,9 @@ main{
 	display: block;
 	border: 1px solid #666;
 	background-color: #fff;
-	height: 1.6em;
+	height: 2.0em;
 	width: 90%;
-	padding: 0.5em 1em;
+	padding: 1.0em 1em;
 	margin-bottom: 1em;
 }
 

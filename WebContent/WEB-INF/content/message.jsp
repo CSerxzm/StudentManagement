@@ -36,7 +36,7 @@
 			%>
 			</div>
 			<div class="right">
-				<a class="relogin" href="login.html">重新登录></a>
+				<a class="relogin" href="index.jsp">重新登录></a>
 			</div>
 		</div>
 	</main>

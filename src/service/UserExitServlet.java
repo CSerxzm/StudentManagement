@@ -16,7 +16,7 @@ public class UserExitServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		//转发到login.html页面
-		response.sendRedirect("login.html");
+		response.sendRedirect("index.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

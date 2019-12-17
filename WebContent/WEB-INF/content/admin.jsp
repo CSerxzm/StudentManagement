@@ -28,7 +28,7 @@
 					<li><%=user.getLevel() %></li>
                     <li><%=user.getId() %></li>
 					<li><a href="UserExitServlet">退出登录</a></li>
-					<li><a href="login.html">返回首页</a></li>
+					<li><a href="index.jsp">返回首页</a></li>
 				</ul>
 			</div>
 		</nav>

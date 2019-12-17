@@ -44,7 +44,7 @@ CREATE TABLE student (
   sno int(11) NOT NULL AUTO_INCREMENT,
   sname char(8) DEFAULT NULL,
   clno int(11) DEFAULT NULL,
-  ssex char(2) DEFAULT NULL,
+  ssex enum('男','女'),
   sage smallint(6) DEFAULT NULL,
   PRIMARY KEY (sno),
   KEY fk_student_class (clno),
@@ -57,9 +57,9 @@ DROP TABLE IF EXISTS sc;
 CREATE TABLE sc (
   sno int(11) NOT NULL,
   cno int(11) NOT NULL,
-  taskgrade decimal(5,2) DEFAULT NULL,
-  expgrade decimal(5,2) DEFAULT NULL,
-  examgrade decimal(5,2) DEFAULT NULL,
+  taskgrade decimal(5,2) DEFAULT 0,
+  expgrade decimal(5,2) DEFAULT 0,
+  examgrade decimal(5,2) DEFAULT 0,
   grade decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (sno,cno),
   KEY fk_sc_course (cno),
@@ -175,6 +175,15 @@ DROP TRIGGER IF EXISTS user_date;
 CREATE trigger user_date before insert on user for each row 
 begin 
   set new.create_time = now();
+end;
+
+DROP TRIGGER IF EXISTS SC_UPDATE;
+CREATE trigger SC_UPDATE after update on sc for each row 
+begin
+  IF new.taskgrade>100 OR new.taskgrade<0 OR new.expgrade>100 OR new.expgrade<0 OR	new.examgrade>100 OR new.examgrade<0
+	THEN  
+        delete from sc where sno=new.sno AND cno=new.cno;    
+  END IF;
 end;
 
 EOF

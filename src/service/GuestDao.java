@@ -75,7 +75,6 @@ public class GuestDao extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("student");
 		int sno = user.getId();
-		System.out.println("cno="+request.getParameter("cno"));
 		int cno = Integer.valueOf(request.getParameter("cno"));
 		int flag= new SCDao().delete_sc(sno,cno);
 		PrintWriter out = response.getWriter();
@@ -340,28 +339,19 @@ public class GuestDao extends HttpServlet {
 		StudentInform result = viewDao.query_all_student(id);
 		PrintWriter out = response.getWriter();
 		//输出结果
-		if(result != null){
+		if(result != null){			
 			out.write("<div class='all'>");
 			out.write("<table>");
-			out.write("<thead>");
-			out.write("<tr><th>学号</th><th>姓名</th><th>班级号</th><th>班级</th></tr>");
-			out.write("</thead>");
-			out.write("<tr>");
-			out.write("<td>"+result.getSno()+"</td>");
-			out.write("<td>"+result.getSname()+"</td>");
-			out.write("<td>"+result.getClno()+"</td>");
-			out.write("<td>"+result.getClname()+"</td>");
-			out.write("</tr>");
-			out.write("<tr><th>系号</th><th>系名</th><th>性别</th><th>年龄</th></tr>");
-			out.write("</thead>");
-			out.write("<tr>");
-			out.write("<td>"+result.getDno()+"</td>");
-			out.write("<td>"+result.getDname()+"</td>");
-			out.write("<td>"+result.getSsex()+"</td>");
-			out.write("<td>"+result.getSage()+"</td>");
-			out.write("</tr>");
+			out.write("<tr><td>学号</td><td>"+result.getSno()+"</td></tr>");
+			out.write("<tr><td>姓名 </td><td>"+result.getSname()+"</td></tr>");
+			out.write("<tr><td>班级号</td><td>"+result.getClno()+"</td></tr>");
+			out.write("<tr><td>班级名</td><td>"+result.getClname()+"</td></tr>");
+			out.write("<tr><td>系号</td><td>"+result.getDno()+"</td></tr>");
+			out.write("<tr><td>系名</td><td>"+result.getDname()+"</td></tr>");
+			out.write("<tr><td>性别</td><td>"+result.getSsex()+"</td></tr>");
+			out.write("<tr><td>年龄</td><td>"+result.getSage()+"</td></tr>");
 			out.write("</table>");
-			out.write("</div>");
+			out.write("</div>");	
 		}	
 		out.flush();
 		out.close();

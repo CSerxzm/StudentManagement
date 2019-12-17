@@ -6,12 +6,12 @@
 }
 
 body {
+	
 	background-image: url(../images/bg.jpg);
 	background-position: center center; 
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	background-color: #fff;
 }
 
 a{
@@ -40,7 +40,7 @@ header{
 	font-size:15px;
 	line-height: 34px;
 	width: 100%;
-	background-color:#fff;
+	background-color:rgba(255,255,255,.5);
 	height: 60px;
 }
 
@@ -75,7 +75,7 @@ header nav{
 
 .userinfo ul li a:hover{
 	font-size:20px;
-	color: red;
+	color:#CCE8EB;
 }
 
 main{
@@ -86,7 +86,6 @@ main{
 	overflow: hidden;
 	z-index: 1;
 	padding-top:60px ;
-	background:#F2F2F2;
 }
 
 .select{
@@ -107,7 +106,7 @@ main{
  	width: 100%;
  	max-width: 360px;
  	margin:10px auto 20px;
- 	background: #FFF;
+ 	background:rgba(255,255,255,.5);;
  	-webkit-border-radius: 4px;
  	-moz-border-radius: 4px;
  	border-radius: 4px;
@@ -168,7 +167,7 @@ main{
  }
 
  .submenu li a:hover {
- 	background-color: #E0555A;
+ 	background-color: #CCE8EB;
  	color:#fff;
  }
 
@@ -181,7 +180,7 @@ main{
 	margin:30px 60px 20px;
 	width:75%;
 	height: 560px;
-	background-color:#fff;
+	background-color:rgba(255,255,255,.5);
 }
 
 .welcome{
