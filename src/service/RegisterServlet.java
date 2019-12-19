@@ -24,21 +24,33 @@ public class RegisterServlet extends HttpServlet {
 		String level = request.getParameter("level");
 		//实例化UserDao对象
 		UserDao userDao = new UserDao();
-		User user = userDao.register(sno,username, password,level);
-		//判断是否注册成功
-		if(user != null){//成功
-			if (level.equals("学生")) {
+		if (level.equals("学生")) {
+			User user = userDao.register(sno,username, password,level);
+			if(user!=null) {
 				request.getSession().setAttribute("student", user);//将用户对象放到session中
 				//转发到user.jsp中
-				request.getRequestDispatcher("/WEB-INF/content/guest.jsp").forward(request, response);
-			}else{
-				request.getSession().setAttribute("admin", user);//将管理员对象放到session中
-				//转发到user.jsp中
-				request.getRequestDispatcher("/WEB-INFcontent/admin.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/content/guest.jsp").forward(request, response);				
+			}else {
+				request.setAttribute("info"," 错误:已存在该用户,不能重复注册！");
+				request.getRequestDispatcher("/WEB-INF/content/message.jsp").forward(request, response);
 			}
-		}else {//失败
-			request.setAttribute("info"," 错误:已存在该用户,不能重复注册！");
-			request.getRequestDispatcher("/WEB-INF/content/message.jsp").forward(request, response);
+		}else {
+			if(sno==999) {
+				//邀请码
+				User user = userDao.register(username, password,level);
+				if(user!=null) {
+					request.getSession().setAttribute("admin", user);//将用户对象放到session中
+					//转发到user.jsp中
+					request.getRequestDispatcher("/WEB-INF/content/admin.jsp").forward(request, response);				
+				}else {
+					request.setAttribute("info"," 错误:已存在该用户,不能重复注册！");
+					request.getRequestDispatcher("/WEB-INF/content/message.jsp").forward(request, response);
+				}
+
+			}else {
+				request.setAttribute("info"," 错误:邀请码错误！");
+				request.getRequestDispatcher("/WEB-INF/content/message.jsp").forward(request, response);
+			}
 		}
 	}
 

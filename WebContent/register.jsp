@@ -24,13 +24,13 @@
 				<form class="register_form" action="RegisterServlet" method="post">
 					<h3>学生信息管理系统</h3>
 					<p>注册</p>
-					<input type="text" name="sno" value placeholder="学号" required="required">
+					<input type="text" name="sno" value placeholder="学号/邀请码" required="required">
 					<input type="text" autofocus="autofocus" name="username" value placeholder="用户名" required="required">
 					<input type="password" name="password" value placeholder="密码" required="required">
-					<p>是否为教师</p>
+					<p>身份</p>
 					<span class="radio">
-						<input type="radio" name="level" value="否" checked="checked"><span>否</span>
-						<input type="radio" name="level" value="是"><span>是</span>
+						<input type="radio" name="level" value="学生" checked="checked"><span>学生</span>
+						<input type="radio" name="level" value="教师"><span>教师</span>
 					</span>
 					<input id="submit" type="submit" name="submit" value="提交">
 				</form>

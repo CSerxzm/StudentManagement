@@ -99,6 +99,35 @@ public class UserDao {
 			}
 		return (flag==1)?user:null;
 	}
+	//管理员
+	public User register(String username,String password,String level) {
+		Connection conn = DBUtils.getConnection();
+		User user = null;
+		int flag=0;
+		try {
+			//判断数据库中是否存在该用户
+			if(!userIsExist(username)){//不存在该用户，可以注册
+				user = new User();//实例化一个user对象
+				//给用户对象赋值
+				user.setUsername(username);
+				user.setPassword(password);
+				user.setLevel(level);
+				//将用户对象写入数据库
+				String sql = "insert into user(username,password,level) values(?,?,?);";
+				PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+				ps.setString(1, username);
+				ps.setString(2, password);
+				ps.setString(3, level);
+				flag = ps.executeUpdate();
+				ps.close();
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBUtils.closeConnection(conn);
+			}
+		return (flag==1)?user:null;
+	}
 	//获取用户的权限级别,若存在则返回级别(管理员，普通用户),若不存在返回空
 	public String level(String username){
 		Connection conn = DBUtils.getConnection();
